@@ -1,0 +1,13 @@
+{
+  "name": "testcase-artisan-marketplace",
+  "owner": {
+    "name": "your-name-here"
+  },
+  "plugins": [
+    {
+      "name": "testcase-artisan",
+      "source": "./",
+      "description": "Generates and maintains structured test case specifications from project docs. Does not write or run test code."
+    }
+  ]
+}
