@@ -31,13 +31,25 @@ skill (or a human) can act on.
 
 ## Install
 
-**Via Claude Code's plugin marketplace:**
-```
-/plugin marketplace add zhuhrymhd/testcase-artisan
-/plugin install testcase-artisan@testcase-artisan-marketplace
-```
+Pick **one** of the two options below.
 
-**Via skills.sh (works across Claude Code, Cursor, Codex, and others):**
+**Option A - Claude Code's plugin marketplace**
+
+Run these two commands one at a time in the Claude Code prompt:
+
+1. Add the marketplace:
+   ```
+   /plugin marketplace add zhuhrymhd/testcase-artisan
+   ```
+2. Install the plugin:
+   ```
+   /plugin install testcase-artisan@testcase-artisan-marketplace
+   ```
+
+If you add the marketplace through the `/plugin` menu instead, enter only
+`zhuhrymhd/testcase-artisan` as the marketplace source.
+
+**Option B - skills.sh (works across Claude Code, Cursor, Codex, and others)**
 ```
 npx skills add zhuhrymhd/testcase-artisan
 ```
