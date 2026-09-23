@@ -1,5 +1,12 @@
 # testcase-artisan
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-orange)
+![Platform: iOS](https://img.shields.io/badge/platform-iOS-lightgrey)
+
+**Tags:** `testing` `test-cases` `qa` `specification` `edge-cases` `ios`
+
 A Claude Code skill that generates and maintains structured test case
 specifications from your project's documentation. It does not write or run
 test code - it produces markdown test case specs that a separate testing
