@@ -1,0 +1,5 @@
+{
+  "name": "testrun-forgemaster",
+  "description": "Writes and runs test code strictly from test case specs defined by testcase-artisan, then reports results in plain language. Never modifies app code.",
+  "version": "1.0.0"
+}
