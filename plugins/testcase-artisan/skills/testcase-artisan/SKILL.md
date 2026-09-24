@@ -1,16 +1,15 @@
 ---
 name: testcase-artisan
 description: >
-  Creates and maintains structured test case specifications (not test code) for app
-  features, derived from the project's documentation and specs. Use this whenever the
-  user asks to write, generate, draft, or update test cases for a feature - including
-  phrasing that doesn't name "test case" explicitly, like "what needs to be tested
-  here", "what scenarios should this cover", "test cases for the new SSO flow", "is
-  there anything we're missing for login", or wants QA coverage planned out right
-  after finishing or describing a feature. Also use this to audit which features in
-  the repo are missing test case coverage. This skill only produces test case
-  specification documents in markdown. It does NOT write or execute test code, and it
-  does NOT decide overall test strategy - that belongs to a separate testing skill.
+  Creates and maintains structured test case specifications (what to test, not test
+  code) for app features, derived from the project's docs. Use when the user asks for
+  test cases, test scenarios, or coverage planning, including phrasing like "write
+  test cases for login", "what should we test in the SSO flow", "what scenarios does
+  this need", "update the test cases, I just added SSO", or "which features have no
+  test cases yet". Do NOT use when the user wants test code written or tests run,
+  even if they say "test" (e.g. "run the smoke tests", "write the UI test for SSO",
+  "make tests for checkout") - that is testrun-forgemaster's job. This skill only
+  produces test case specification documents in markdown.
 ---
 
 # Testcase Artisan
@@ -23,11 +22,13 @@ Read this whole file before doing anything - the steps below depend on each othe
 This skill produces one thing: markdown files describing what should be tested and
 why, under `docs/test-cases/`. It never writes XCTest/XCUITest/Jest/etc. code, and it
 never runs a build or a simulator. If the user asks to actually implement or run
-tests, that's a different skill's job - point them there instead of doing it here.
+tests, that's testrun-forgemaster's job.
 
-The `Level test` field this skill writes on each test case is a classification, not a
-final decision. A downstream testing skill may reasonably disagree with it once it
-looks at real implementation constraints. Don't treat it as binding.
+The `Level test` field this skill writes on each test case is the reference that
+downstream skills follow. testrun-forgemaster implements each test case at the level
+written here; if it thinks another level fits better, it only records that as a
+suggestion in its report and never changes these files. So classify `Level test`
+carefully using the rule in `references/field-format.md` - it is not a loose hint.
 
 ## Step 1: Figure out the mode
 
@@ -37,7 +38,7 @@ from what's on disk and what the user asked for:
 - User named a specific feature (or one is obvious from context) → **scoped mode**.
   Check whether `docs/test-cases/<feature>.md` already exists.
   - Doesn't exist → **generate**: build the file from scratch (Step 4 onward).
-  - Exists → **update**: read it first, then reconcile against current docs (Step 6).
+  - Exists → **update**: read it first, then reconcile against current docs (Step 5).
 - User asked something like "what's missing", "audit coverage", or gave no specific
   feature at all → **gap-audit mode** (Step 7). Don't generate full test case detail
   in this mode - just report gaps.
@@ -59,7 +60,7 @@ they conflict:
 Every test case must record which of these it came from. Use `Source: written spec`
 when it's grounded in something actually written down, and `Source: inferred` when
 you had to reason it out from code structure or from the edge-case checklist in Step
-5. Never blend the two silently - the distinction tells the user how much to trust
+4. Never blend the two silently - the distinction tells the user how much to trust
 the test case without re-reading the source themselves.
 
 ## Step 3: Detect the platform
@@ -68,11 +69,22 @@ Look for marker files at the repo root to decide which platform pack to load fro
 `references/platforms/`:
 
 - `*.xcodeproj`, `Package.swift` → iOS (load `references/platforms/ios.md`)
+- `AndroidManifest.xml` present (`build.gradle`/`build.gradle.kts` alone is NOT
+  enough - a JVM backend project can have those too) → Android (load
+  `references/platforms/android.md`)
+- `package.json` with a frontend framework dependency (react, vue, svelte,
+  angular, etc.), or a `vite.config.*` / `index.html` at the repo root → Web
+  (load `references/platforms/web.md`)
+- `package.json` with a server framework (express, fastify, koa, nestjs) and no
+  frontend framework, `requirements.txt`/`pyproject.toml` with fastapi/django/
+  flask, `go.mod`, a `Gemfile` with rails/sinatra, `pom.xml`/`build.gradle` with
+  spring-boot, or an OpenAPI/Swagger spec file (`openapi.yaml`, `swagger.json`)
+  → Backend/API (load `references/platforms/backend-api.md`)
 
-Only `ios.md` exists today. If you detect a different stack and no matching platform
-pack exists yet, say so explicitly to the user and fall back to the platform-neutral
-categories in `references/edge-case-checklist.md` alone - don't invent platform
-conventions that aren't documented.
+If you detect a different stack and no matching platform pack exists yet, say so
+explicitly to the user and fall back to the platform-neutral categories in
+`references/edge-case-checklist.md` alone - don't invent platform conventions that
+aren't documented.
 
 In a monorepo with more than one platform, treat each platform's version of a
 same-named feature as a separate output file (see Step 8 on ID prefixes) - don't
@@ -171,3 +183,8 @@ Load these as needed rather than assuming their contents:
 - `references/core-flows.md` - where the user maintains their explicit list of core
   flows, and the fallback rule for features not on it.
 - `references/platforms/ios.md` - iOS detection signals and iOS-specific categories.
+- `references/platforms/android.md` - Android detection signals and Android-specific
+  categories.
+- `references/platforms/web.md` - Web detection signals and web-specific categories.
+- `references/platforms/backend-api.md` - Backend/API detection signals, which core
+  categories don't apply server-side, and backend-specific categories.

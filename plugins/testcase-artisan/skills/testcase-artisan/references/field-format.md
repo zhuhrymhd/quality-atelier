@@ -28,11 +28,11 @@ If `Status` is `needs-review`, add one line directly under it explaining why, e.
   > covers it, not just password login.
 ```
 
-## Ringkas / index format (used only in `_index.md`, auto-generated)
+## Short index format (used only in `_index.md`, auto-generated)
 
 ```markdown
-- [ ] TC-003 (P1, integration) ⚠️needs-review — Short title
-- [x] TC-007 (P0, e2e-multi-screen, 🔥smoke) — Short title
+- [ ] TC-003 (P1, integration) ⚠️needs-review: Short title
+- [x] TC-007 (P0, e2e-multi-screen, 🔥smoke): Short title
 ```
 
 Checked box means `Status: active` or `superseded-by`. Unchecked means
@@ -75,6 +75,11 @@ about how important the feature is.
 Default toward the cheapest level that can actually verify the behavior. Don't mark
 something `e2e-multi-screen` just because the feature feels important - only mark it
 that way if the Steps genuinely can't be verified without crossing screens.
+
+A platform pack may add extra `Level test` values scoped to that platform (for
+example, a `contract` level for backend/API work) when none of the five above fit.
+It may also declare some of the five not applicable on that platform. Check the
+loaded platform pack before assuming the full list above always applies.
 
 ## Smoke flag
 
