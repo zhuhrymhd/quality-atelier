@@ -37,7 +37,7 @@ First release.
 
 - Renamed from `testcase-artisan` to `quality-atelier` and restructured as a
   multi-plugin marketplace. Install with
-  `/plugin marketplace add <owner>/quality-atelier`.
+  `/plugin marketplace add zhuhrymhd/quality-atelier`.
 
 ## testcase-artisan 1.0.0
 
