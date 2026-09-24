@@ -1,5 +1,6 @@
 {
   "name": "quality-atelier",
+  "description": "A Claude Code plugin marketplace for QA work: one plugin writes structured test case specs from your project docs, the other turns those specs into test code and runs it.",
   "owner": { "name": "zhuhrymhd" },
   "plugins": [
     {

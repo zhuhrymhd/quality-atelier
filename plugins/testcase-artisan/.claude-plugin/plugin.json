@@ -2,5 +2,6 @@
   "name": "testcase-artisan",
   "description": "Generates and maintains structured test case specifications from project docs. Does not write or run test code.",
   "version": "1.1.0",
+  "author": { "name": "zhuhrymhd" },
   "keywords": ["testing", "test-cases", "qa", "specification", "edge-cases", "ios", "android", "web", "backend"]
 }
