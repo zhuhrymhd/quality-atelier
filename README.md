@@ -1,8 +1,12 @@
-# quality-atelier
+<p align="center">
+  <img src="assets/readme/readme-cover@2x.png" alt="Quality Atelier - a guild of agent skills that enhance your code to +10" width="100%">
+</p>
 
-![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-orange)
-![Platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20Android%20%7C%20Web%20%7C%20Backend-lightgrey)
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
+  <img src="https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-orange" alt="Claude Code plugin marketplace">
+  <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20Android%20%7C%20Web%20%7C%20Backend-lightgrey" alt="Platforms: iOS, Android, Web, Backend">
+</p>
 
 **Tags:** `testing` `test-cases` `qa` `specification` `test-automation` `ios` `android` `web` `backend`
 
@@ -10,12 +14,17 @@ A Claude Code plugin marketplace for QA work. It ships two plugins that work
 as a pair: one writes the test case specs, the other turns those specs into
 test code and runs it.
 
-| Plugin | Version | What it does |
-|---|---|---|
-| `testcase-artisan` | 1.1.0 | Writes and maintains test case specs (markdown) from your project docs. Does not write or run test code. |
-| `testrun-forgemaster` | 1.0.0 | Writes and runs test code strictly from those specs, then reports results in plain language. Never modifies app code. |
+| | Plugin | Version | What it does |
+|---|---|---|---|
+| <img src="assets/testcase-artisan/testcase-artisan@64.png" width="32" alt=""> | `testcase-artisan` | 1.1.0 | Writes and maintains test case specs (markdown) from your project docs. Does not write or run test code. |
+| <img src="assets/testrun-forgemaster/testrun-forgemaster@64.png" width="32" alt=""> | `testrun-forgemaster` | 1.0.0 | Writes and runs test code strictly from those specs, then reports results in plain language. Never modifies app code. |
+| <img src="assets/security-locksmith/security-locksmith@64.png" width="32" alt=""> | `security-locksmith` | Soon | Finds cracks in the armor. |
 
 ## testcase-artisan
+
+<img src="assets/testcase-artisan/testcase-artisan@256.png" alt="testcase-artisan icon: a scroll with a checklist and wax seal" width="128" align="right">
+
+*Writes the test specs.*
 
 - Reads your docs/specs in a defined priority order and turns them into
   structured test cases, one file per feature under `docs/test-cases/`.
@@ -31,6 +40,10 @@ test code and runs it.
 - Platform packs: iOS, Android, Web, Backend/API.
 
 ## testrun-forgemaster
+
+<img src="assets/testrun-forgemaster/testrun-forgemaster@256.png" alt="testrun-forgemaster icon: a hammer striking a glowing anvil" width="128" align="right">
+
+*Forges and runs the tests.*
 
 - Writes test code strictly from specs in `docs/test-cases/`, runs it, and
   reports results in plain language.
@@ -88,6 +101,7 @@ Claude also picks up the right skill automatically when relevant.
 quality-atelier/
 ├── .claude-plugin/
 │   └── marketplace.json
+├── assets/                 (README cover and plugin icons)
 └── plugins/
     ├── testcase-artisan/
     │   ├── .claude-plugin/plugin.json
@@ -118,3 +132,11 @@ See [CHANGELOG.md](CHANGELOG.md).
 ## License
 
 MIT (see LICENSE).
+
+---
+
+<p align="center">
+  <img src="assets/family-preview.png" alt="The Quality Atelier family: quality-atelier, testcase-artisan, testrun-forgemaster, and security-locksmith icons" width="600">
+  <br>
+  <sub>The guild: quality-atelier · testcase-artisan · testrun-forgemaster · security-locksmith (soon)</sub>
+</p>
