@@ -1,12 +1,10 @@
 {
-  "name": "testcase-artisan-marketplace",
-  "owner": {
-    "name": "zhuhrymhd"
-  },
+  "name": "quality-atelier",
+  "owner": { "name": "" },
   "plugins": [
     {
       "name": "testcase-artisan",
-      "source": "./",
+      "source": "./plugins/testcase-artisan",
       "description": "Generates and maintains structured test case specifications from project docs. Does not write or run test code."
     }
   ]
